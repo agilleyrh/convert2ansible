@@ -1,0 +1,25 @@
+hostname myoffice-switch
+!
+interface Vlan1
+ ip address 192.168.10.2 255.255.255.0
+ no shutdown
+!
+interface GigabitEthernet1/0/1
+ description Uplink to Router
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/2
+ description Uplink to Wireless Controller
+ switchport mode access
+ switchport access vlan 10
+!
+ip default-gateway 192.168.10.1
+!
+line vty 0 4
+ login local
+ transport input ssh
+!
+username bladelogic privilege 15 secret BladelogicPassword1
+!
+end
+write memory

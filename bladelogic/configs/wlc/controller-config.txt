@@ -1,0 +1,19 @@
+!
+! Set up management interface
+interface GigabitEthernet0
+ ip address 192.168.10.10 255.255.255.0
+ no shutdown
+!
+! Configure WLAN/SSID
+wlan mybusiness 1 mybusiness
+ no security wpa akm dot1x
+ security wpa psk set-key ascii 0 MySecurePassword123
+!
+interface Vlan10
+ ip address 192.168.10.20 255.255.255.0
+ no shutdown
+!
+ap name AP1 ethernet mac-address xx.xx.xx.xx.xx.xx
+!
+end
+write memory

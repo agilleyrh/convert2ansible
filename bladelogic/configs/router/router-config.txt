@@ -1,0 +1,34 @@
+hostname myoffice-router
+!
+interface GigabitEthernet0/0/0
+ description WAN connection
+ ip address dhcp
+ no shutdown
+!
+interface GigabitEthernet0/0/1
+ description LAN
+ ip address 192.168.10.1 255.255.255.0
+ no shutdown
+!
+ip dhcp pool LANPOOL
+ network 192.168.10.0 255.255.255.0
+ default-router 192.168.10.1
+ dns-server 8.8.8.8
+!
+ip nat inside source list 1 interface GigabitEthernet0/0/0 overload
+access-list 1 permit 192.168.10.0 0.0.0.255
+!
+interface GigabitEthernet0/0/1
+ ip nat inside
+!
+interface GigabitEthernet0/0/0
+ ip nat outside
+!
+line vty 0 4
+ login local
+ transport input ssh
+!
+username bladelogic privilege 15 secret BladelogicPassword1
+!
+end
+write memory

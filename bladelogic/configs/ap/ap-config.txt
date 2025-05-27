@@ -1,0 +1,5 @@
+!
+capwap ap controller ip address 192.168.10.10
+!
+end
+write memory
