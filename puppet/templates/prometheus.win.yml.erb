@@ -1,0 +1,17 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'windows'
+    static_configs:
+      - targets: ['localhost:9182'] # windows_exporter default port
+
+  - job_name: 'services'
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['localhost:9182']
+    params:
+      collect[]:
+<% @services_to_monitor.each do |svc| %>
+        - <%= svc %>
+<% end %>

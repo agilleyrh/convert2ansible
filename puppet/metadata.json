@@ -1,0 +1,12 @@
+{
+  "name": "company/prometheus_stack",
+  "version": "0.1.0",
+  "author": "Your Name",
+  "summary": "Installs and configures Prometheus monitoring on Windows and RHEL",
+  "license": "Apache-2.0",
+  "source": "https://github.com/company/prometheus_stack",
+  "dependencies": [
+    {"name": "puppetlabs/stdlib", "version_requirement": ">= 6.0.0"},
+    {"name": "puppetlabs/concat", "version_requirement": ">= 6.0.0"}
+  ]
+}
