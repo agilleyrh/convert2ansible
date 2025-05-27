@@ -1,0 +1,17 @@
+win2022-container-host:
+  provider: my-vmware
+  clonefrom: win2022-template
+  datastore: your-datastore
+  cluster: your-cluster
+  num_cpus: 4
+  memory: 65536
+  disk:
+    - size: 1024
+  domain: yourdomain.local
+  resourcepool: yourpool
+  power_on: True
+  deploy: True
+  win_username: Administrator
+  win_password: 'ReplaceMe123!'
+  minion:
+    master: saltmaster.yourdomain.local
